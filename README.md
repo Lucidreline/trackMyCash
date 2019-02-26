@@ -1,0 +1,2 @@
+# Track-My-Cash #
+When you pay for something, the payments don't always get taken out of your account immediately. They tend to stay pending. This problem has to lead me to believe I have more money in my bank account than I really had because a charge had not shown up yet. In this app, you can enter how much money you have in your bank account(s), money owed to credit cards, and cash in your wallet to know exactly how much money you have. When you pay for something, you can simply put it in the app and it will IMMEDIATELY tell you how much money you have left.
