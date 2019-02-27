@@ -4,7 +4,10 @@ funds
 <h1><%= user.username %></h1>
 
 
-
+<form action="/bankname?_method=PUT" method="POST">
+    <input name="bankname" type="text" placeholder="deposit">
+    <input type="submit" value="Change">
+</form>
 <p>Bank Name: <%= user.bank.name %></p>
 <p>Bank Balance: <%= user.bank.balance %></p>
 <form action="/deposit?_method=PUT" method="POST">
