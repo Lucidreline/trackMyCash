@@ -1,5 +1,15 @@
 <% include partials/header %>
 funds
 <a href="/logout">Log Out</a>
+<h1><%= user.username %></h1>
+
+
+
+<p>Bank Name: <%= user.bank.name %></p>
+<p>Bank Balance: <%= user.bank.balance %></p>
+<form action="/deposit?_method=PUT" method="POST">
+    <input name="deposit" type="number" placeholder="deposit">
+    <input type="submit" value="deposit">
+</form>
 
 <% include partials/header %>

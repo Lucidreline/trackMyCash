@@ -5,8 +5,8 @@ var passportLocalMongoose = require("passport-local-mongoose"),
     username: String,
     password: String,
     bank: {
-        name: String,
-        balance: Number
+        name: { type: String, default: "Bank Name" },
+        balance: { type: Number, default: 0 }
     },
     cards : [
         {
