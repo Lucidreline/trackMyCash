@@ -23,6 +23,11 @@ funds
 <h1>Cards</h1>
 <% cards.forEach(function(card){%>
     <p><%= card.name%></p>
+    <p><%= card.credit%></p>
+    <form action="/card/<%= card._id%>?_method=PUT" method="POST">
+        <input type="number" name="purchase" placeholder="placeholder">
+        <input type="submit" value="purchase">
+    </form>
     
 <% }); %>
 

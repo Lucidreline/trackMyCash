@@ -4,12 +4,13 @@ var middleware = require("../middleware"),
     User = require("../models/user"),
     Card = require("../models/card"); 
     
+    
 router.get("/funds", middleware.isLoggedIn, function(req, res){
     User.findById(req.user._id, function(err, foundUser){
         if(err){
             console.log(err);
         }else{
-           Card.find({}, function(err, allCards){
+           Card.find({'owner.id' : req.user._id}, function(err, allCards){
              if(err){
                  console.log(err);
             }else{
@@ -65,12 +66,30 @@ router.post("/newcard", function(req, res){
                     
                     foundUser.cards.push(newCard);
                     foundUser.save();
-                    console.log(foundUser)
                     res.redirect("/funds")
                         }
                     })
             }
         })
+})
+
+router.put("/card/:id", function(req, res) {
+    Card.findById(req.params.id, function(err, foundCard){
+        if(err){
+            console.log(err)
+        }else{
+            
+            req.user.bank.balance -= Number(req.body.purchase)
+            User.findByIdAndUpdate(req.user._id, req.user, function(err, updatedUser){
+                if (err){
+                    console.log(err)
+                }else{
+                    res.redirect("/funds")
+                }
+            })
+            
+        }
+    })
 })
 
 module.exports = router
