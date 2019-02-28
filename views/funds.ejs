@@ -15,4 +15,15 @@ funds
     <input type="submit" value="deposit">
 </form>
 
+<form action="/newcard" method="POST">
+    <input type="text" name="card[name]" placeholder="New card Name"> 
+    <input type="submit" value="Create">
+</form>
+
+<h1>Cards</h1>
+<% cards.forEach(function(card){%>
+    <p><%= card.name%></p>
+    
+<% }); %>
+
 <% include partials/header %>

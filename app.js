@@ -8,7 +8,8 @@ var express = require("express"),
     LocalStrategy = require("passport-local")
     
 // - - - - - - Models - - - - - - 
-var User = require("./models/user.js")
+var User = require("./models/user.js"),
+    Card = require("./models/card.js")
 
 // - - - - - - Routes - - - - - - 
 var userRoutes = require("./routes/users.js"),
