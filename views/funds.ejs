@@ -1,34 +1,100 @@
 <% include partials/header %>
-funds
-<a href="/logout">Log Out</a>
-<h1><%= user.username %></h1>
 
 
-<form action="/bankname?_method=PUT" method="POST">
-    <input name="bankname" type="text" placeholder="rename">
-    <input type="submit" value="Change">
-</form>
-<p>Bank Name: <%= user.bank.name %></p>
-<p>Bank Balance: <%= (user.bank.balance).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')  %></p>
-<form action="/deposit?_method=PUT" method="POST">
-    <input name="deposit" type="number" step="0.01" placeholder="deposit">
-    <input type="submit" value="deposit">
-</form>
+<div class="container-fluid">   
+    <nav class="navbar navbar-expand-md sticky-top row" id="navvy">
+        <div class="container">
+            <a href="/" class="pl-4 navbar-brand">
+                Track My Cash
+            </a>
 
-<form action="/newcard" method="POST">
-    <input type="text" name="card[name]" placeholder="New card Name"> 
-    <input type="submit" value="Create">
-</form>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
+                <img src="https://cdn1.iconfinder.com/data/icons/web-and-user-interface-21/512/32-512.png" height="30" alt="">
+            </button>
 
-<h1>Cards</h1>
-<% cards.forEach(function(card){%>
-    <p><%= card.name%></p>
-    <p><%= card.credit%></p>
-    <form action="/card/<%= card._id%>?_method=PUT" method="POST">
-        <input type="number" step="0.01" name="purchase" placeholder="placeholder">
-        <input type="submit" value="purchase">
-    </form>
+            <div class="collapse navbar-collapse" id="collapse_target">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Welcome, <%= user.username %>!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/logout" class="nav-link">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+  </nav>
+</div>
+  
+  
+  
+<div class="container">
     
-<% }); %>
+    <div class="row text-center">
+        <div class="col-md-5">
+            <form action="/bankname?_method=PUT" method="POST">
+                <input name="bankname" type="text" placeholder="Rename Bank">
+            </form>
+            <img src="images/bankIcon.png" height="65px">
+            <h1><%= user.bank.name %></h1>
+            <h2>$<%= (user.bank.balance).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')  %></h2>
+            <form action="/deposit?_method=PUT" method="POST">
+                <input name="deposit" type="number" step="0.01" placeholder="Deposit">
+            </form>
+        </div>
+        <div class="col-md-7">
+            <form action="/newcard" method="POST">
+                <input type="text" name="card[name]" placeholder="New Card Name"> 
+            </form>
+            
+            <h1>Cards</h1>
+            <hr>
+            
+            <div class="row">
+                <% cards.forEach(function(card){%>
+                    <div class="col-md-6  mb-5 mt-4">
+                        <div class="row">
+                            <div class="col-4">
+                                <form action="/card/<%= card._id%>?_method=DELETE" method="POST">
+                                    <input type="image" src="images/trashIcon.png" height="30px">
+                                </form>
+                                
+                            </div>
+                            <div class="col-4">
+                                
+                                    <img src="images/cardIcon.png" height="65px">
+                                
+                            </div>
+                            <div class="col-4">
+                                
+                            </div>
+                        </div>
+                        
+                        
+                        <p><%= card.name%></p>
+                        <p>$<%= (card.credit).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')  %></p>
+                        <form action="/card/<%= card._id%>?_method=PUT" method="POST">
+                            <input type="number" step="0.01" name="purchase" placeholder="Purchase">
+                        </form>
+                    </div>
+                <% }); %>
+            </div>
+        </div>
+    </div>
+                
+            
+            
+            
+            
+            
+</div>
+  
+  
+  
+
+
+
+
+
 
 <% include partials/header %>

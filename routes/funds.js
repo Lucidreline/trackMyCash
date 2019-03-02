@@ -92,4 +92,15 @@ router.put("/card/:id", function(req, res) {
     })
 })
 
+//destroy
+router.delete("/card/:id", function(req, res){
+    Card.findByIdAndRemove(req.params.id, function(err, deletedCard){
+        if(err){
+            res.redirect("/funds")
+        }else{
+            res.redirect("/funds")
+        }
+    })
+})
+
 module.exports = router
