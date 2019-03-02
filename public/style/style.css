@@ -1,10 +1,10 @@
 body{
-    background-color:#B0FFE1;
+    background: #667db6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
     font-family: 'Barrio', cursive;
     width:100%;
-}
-.navbar{
-    border-bottom: black 2.5px solid;
 }
 .navbar a{
     color:white;
@@ -16,6 +16,7 @@ body{
      1px 1px 0 #000;
 }
 .navbar .navbar-brand{
+
     color:white;
     font-size: 45px;
     text-shadow:
@@ -26,9 +27,57 @@ body{
      2px 2px 2px #000;
 }
 
-input[type="text"], input[type="number"]{
+.display-money{
+    font-size:30px;
+    font-family: "montserrat", sans-serif;
+}
+#bank{
+    margin-top:107px;
+}
+#credit-card{
+        margin-top:55px;
+    }
+input::placeholder{
+    color:black;
+    font-family: "montserrat", sans-serif;
+}
+.money-input{
     background: none;
     border: none;
     border-bottom: black solid 1.7px;
 }
-/*font-family: "montserrat";*/
+#new-card-input{
+    background: none;
+    border:none;
+    width:80%;
+    text-align: center;
+    border-bottom: black solid 1.7px;
+}
+.name-input{
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size:25px;
+    text-align:center;
+    width:80%;
+}
+input:focus{
+    outline:none;
+
+}
+.name-input:focus{
+    border-bottom: black solid 1.7px;
+}
+
+@media(max-width:768px){
+    #bank, #new-card-input, #credit-card{
+        margin-top:55px;
+    }
+    #bank{
+        margin-top:25px;
+    }
+    .navbar .navbar-brand{
+    font-size: 35px;
+    
+    }
+}

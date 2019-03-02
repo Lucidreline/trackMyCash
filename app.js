@@ -29,8 +29,6 @@ app.set("view engine", "ejs");
     // this makes it possible for me not to write .ejs ever time i render an ejs file.
    
    
-  
-
 
 app.use(express.static("/public"))
 app.use(methodOverride("_method"));

@@ -73,7 +73,7 @@ router.post("/newcard", function(req, res){
         })
 })
 
-router.put("/card/:id", function(req, res) {
+router.put("/card/:id/purchase", function(req, res) {
     Card.findById(req.params.id, function(err, foundCard){
         if(err){
             console.log(err)
@@ -81,6 +81,49 @@ router.put("/card/:id", function(req, res) {
             
             req.user.bank.balance -= Number(req.body.purchase)
             User.findByIdAndUpdate(req.user._id, req.user, function(err, updatedUser){
+                if (err){
+                    console.log(err)
+                }else{
+                    foundCard.credit -= Number(req.body.purchase)
+                    Card.findByIdAndUpdate(foundCard._id, foundCard, function(err, updatedCard){
+                        if(err){
+                            console.log(err)
+                        }else{
+                           res.redirect("/funds") 
+                        }
+                    })
+                    
+                }
+            })
+            
+        }
+    })
+})
+router.put("/card/:id/edit_name", function(req, res) {
+    Card.findById(req.params.id, function(err, foundCard){
+        if(err){
+            console.log(err)
+        }else{
+            
+            Card.findByIdAndUpdate(foundCard._id, req.body.card, function(err, updatedUser){
+                if (err){
+                    console.log(err)
+                }else{
+                    res.redirect("/funds")
+                }
+            })
+            
+        }
+    })
+})
+
+router.put("/card/:id/reset", function(req, res) {
+    Card.findById(req.params.id, function(err, foundCard){
+        if(err){
+            console.log(err)
+        }else{
+            foundCard.credit = 0;
+            Card.findByIdAndUpdate(foundCard._id, foundCard, function(err, updatedUser){
                 if (err){
                     console.log(err)
                 }else{
