@@ -1,30 +1,9 @@
 <% include partials/header %>
+<% include partials/navbar %>
+<% include partials/flash %>
 
 
-<div class="container-fluid">   
-    <nav class="navbar navbar-expand-lg sticky-top row" id="navvy">
-        <div class="container">
-            <a  href="/" class="navbar-brand">
-                Track My Cash
-            </a>
 
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse_target">
-                <img src="https://cdn1.iconfinder.com/data/icons/web-and-user-interface-21/512/32-512.png" height="30" alt="">
-            </button>
-
-            <div class="collapse navbar-collapse" id="collapse_target">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="" class="nav-link">Welcome, <%= user.username %>!</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/logout" class="nav-link">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-  </nav>
-</div>
   
   
   

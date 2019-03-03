@@ -1,11 +1,13 @@
 require("dotenv").config();
 // - - - - - - Dependencies - - - - - - 
-var express = require("express"),
-    mongoose = require("mongoose"),
+var express        = require("express"),
+    mongoose       = require("mongoose"),
+    flash          = require("connect-flash"),
     methodOverride = require("method-override"),
-    bodyParser = require("body-parser"),
-    passport = require("passport"),
-    LocalStrategy = require("passport-local")
+    bodyParser     = require("body-parser"),
+    passport       = require("passport"),
+    LocalStrategy  = require("passport-local");
+    
     
 // - - - - - - Models - - - - - - 
 var User = require("./models/user.js"),
@@ -32,6 +34,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static("/public"))
 app.use(methodOverride("_method"));
+app.use(flash())
 
 app.use(express.static(__dirname + '/public'));
     // express only looks in "/views", so i have to tell it to look in "public" too for css and stuff
@@ -51,6 +54,8 @@ passport.deserializeUser(User.deserializeUser())
 //makes these in function available everywhere
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");
     next();
 })
 

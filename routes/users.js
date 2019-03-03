@@ -10,26 +10,27 @@ router.post("/register", function(req, res){
     var newUser = new User({username: req.body.username})
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-            console.log(err)
+            req.flash("error", err.message)
             return res.redirect("/user")
         }
         
         passport.authenticate("local")(req, res, function(){
-            
-            res.redirect("/")
+            req.flash("success", "Welcome, " + user.username)
+            res.redirect("/funds")
         })
     })
 })
 
 router.post("/login", passport.authenticate("local", {
     successRedirect: "/funds",
-    failureRedirect: "/"
+    failureRedirect: "/user"
 }), function(req, res){
 })
 
 router.get("/logout", function(req, res){
     req.logout();
-    res.redirect("/");
+    req.flash("success","Logged Out")
+    res.redirect("/user");
 })
 
 
