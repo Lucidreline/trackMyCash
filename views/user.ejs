@@ -1,17 +1,29 @@
 <% include partials/header %>
 <% include partials/flash %>
-<h1>Login</h1>
-<form method="POST" action="/login">
-    <input name="username" type="text" placeholder="Username"> 
-    <input name="password" type="password" placeholder="Password">
-    <input value="Login" type="submit">
-</form>
 
-<h1>Signup</h1>
-<form method="POST" action="/register">
-    <input name="username" type="text" placeholder="Username"> 
-    <input name="password" type="password" placeholder="Password">
-    <input value="Register" type="submit">
-</form>
+
+<div class="container text-center">
+    <div class="row mt-5">
+        <div class="col-lg-6">
+            <h1 class="user-h1">Log In</h1>
+            <form class="user-form" method="POST" action="/login">
+                <input name="username" type="text" placeholder="Username"> 
+                <input name="password" type="password" placeholder="Password">
+                <button class="my-btn user-btn">Log In</button>
+            </form>
+        </div>
+        <div class="col-lg-6">
+            <h1 class="user-h1">Create An Account</h1>
+            <form class="user-form" method="POST" action="/register">
+                <input name="username" type="text" placeholder="Username"> 
+                <input name="password" type="password" placeholder="Password">
+                <button class="my-btn user-btn">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 
 <% include partials/footer %>

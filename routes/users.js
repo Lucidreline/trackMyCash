@@ -15,7 +15,7 @@ router.post("/register", function(req, res){
         }
         
         passport.authenticate("local")(req, res, function(){
-            req.flash("success", "Welcome, " + user.username)
+            req.flash("success", "Welcome " + user.username + "!  Remember to hit enter after entering a value or renaming to submit the changes. ")
             res.redirect("/funds")
         })
     })
