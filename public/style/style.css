@@ -21,11 +21,11 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
     color:white;
     font-size: 45px;
     text-shadow:
-   -1px -1px 0 #000,  
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-     1px 1px 0 #000,
-     2px 2px 2px #000;
+   -2px -2px 0 #000,  
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+     2px 2px 0 #000,
+     5px 5px 10px #000;
 }
 .flash-alert{
     padding: 15px 40px;
@@ -99,6 +99,7 @@ background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3
 .user-btn{
     font-size:20px;
     padding:6px 20px;
+    margin-bottom:35px;
 }
 .my-btn:hover{
     background-color: #667db6;
@@ -161,7 +162,7 @@ input:focus{
     border-bottom: black solid 1.7px;
 }
 
-@media(max-width:768px){
+@media(max-width:992px){
     #new-card-input{
         margin-bottom: 35px;
     }
@@ -175,12 +176,30 @@ input:focus{
     font-size: 30px;
     
     }
-}
-@media(max-width:992px){
+    .content .title{
+    font-size:65px;
+    }
+    .landing-btn{
+        font-size:20px;
+        padding:6px 20px;
+        margin-bottom:35px;
+    }
+    .content p{
+        font-size: 20px;
+    }
+    .content{
+    top:60%;
+    }
 }
 @media(max-width:768px){
+    .content .title{
+    font-size:60px;
+    }
 }
 @media(max-width:576px){
+    .content .title{
+    font-size:55px;
+    }
 }
 
 /*//to remove the ugly autocomplete thing*/
